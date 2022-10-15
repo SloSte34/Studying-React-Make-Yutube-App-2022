@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './app.css';
+import styles from './app.module.css';
+import SearchHeader from './components/search_header/search_header';
 import VideoList from './components/video_list/video_list';
 
 function App() {
@@ -23,7 +24,12 @@ function App() {
       .then((result) => setVideos(result.items)) //result안에 있는 items를 state에 저장한다.
       .catch((error) => console.log('error', error)); //만약 Error가 발생하면 이를 console에 출력한다.
   }, []); //2. mount가 되었을 때 만 useEffect의 함수가 호출이 된다.
-  return <VideoList videos={videos} />;
+  return (
+    <div className={styles.app}>
+      <SearchHeader />
+      <VideoList videos={videos} />
+    </div>
+  );
 }
 
 export default App;
