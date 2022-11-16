@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  border: 1px solid red;
+  height: 5rem;
+  padding: 0.8em 1em;
+  background-color: black;
+  justify-content: space-evenly;
+}
+
+.logo_title {
+  display: flex;
+  align-items: center;
+  color: red;
+  margin-right: 1em;
+}
+
+.title {
+  margin-left: 0.3em;
+}
+
+.input {
+  flex-basis: 50%;
+  font-size: 1.5rem;
+  outline: 0;
+  padding-left: 0.5em;
+}
+
+.button {
+  background-color: darkgrey;
+  outline: 0;
+}
+
+.button:hover {
+  scale: 1.1;
+}
+
+.button_image {
+  height: 100%;
+  padding: 0.5em 0.2em;
+}
