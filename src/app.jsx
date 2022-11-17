@@ -4,8 +4,26 @@ import SearchHeader from './components/search_header/search_header';
 import VideoList from './components/video_list/video_list';
 
 function App() {
-  const [videos, setVideos] = useState([]); //1. 처음에는 텅 빈 state를 설정한다.
   const YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
+  const [videos, setVideos] = useState([]); //1. 처음에는 텅 빈 state를 설정한다.
+
+  const search = (query) => {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${YOUTUBE_API}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) =>
+        result.items.map((item) => ({ ...item, id: item.id.videoId }))
+      )
+      .then((items) => setVideos(items))
+      .catch((error) => console.log('error', error));
+  };
   useEffect(() => {
     const requestOptions = {
       //fetch를 쓸 때 옵션을 전달하는 부분.
@@ -26,7 +44,7 @@ function App() {
   }, []); //2. mount가 되었을 때 만 useEffect의 함수가 호출이 된다.
   return (
     <div className={styles.app}>
-      <SearchHeader />
+      <SearchHeader onSearch={search} />
       <VideoList videos={videos} />
     </div>
   );
