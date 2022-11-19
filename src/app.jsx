@@ -7,23 +7,26 @@ function App() {
   const YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
   const [videos, setVideos] = useState([]); //1. 처음에는 텅 빈 state를 설정한다.
 
-  const search = (query) => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    };
+  const search = (query) => {};
 
-    fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${YOUTUBE_API}`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) =>
-        result.items.map((item) => ({ ...item, id: item.id.videoId }))
-      )
-      .then((items) => setVideos(items))
-      .catch((error) => console.log('error', error));
-  };
+  // const search = (query) => {
+  //   const requestOptions = {
+  //     method: 'GET',
+  //     redirect: 'follow',
+  //   };
+
+  //   fetch(
+  //     `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${YOUTUBE_API}`,
+  //     requestOptions
+  //   )
+  //     .then((response) => response.json())
+  //     .then((result) =>
+  //       result.items.map((item) => ({ ...item, id: item.id.videoId }))
+  //     )
+  //     .then((items) => setVideos(items))
+  //     .catch((error) => console.log('error', error));
+  // };
+
   useEffect(() => {
     const requestOptions = {
       //fetch를 쓸 때 옵션을 전달하는 부분.
