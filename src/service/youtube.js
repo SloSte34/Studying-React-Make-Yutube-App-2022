@@ -1,3 +1,4 @@
+const YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
 class Youtube {
   constructor(key) {
     this.key = key;
