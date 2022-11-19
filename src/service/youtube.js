@@ -31,3 +31,6 @@ class Youtube {
       );
   }
 }
+
+export default Youtube;
+//export를 하지 않으면 auto import가 발생하지 않는다.
