@@ -1,4 +1,3 @@
-const YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
 class Youtube {
   constructor(key) {
     this.key = key;
@@ -13,7 +12,7 @@ class Youtube {
   mostPopular() {
     //가장 인기 있는 것을 보여주는 부분
     return fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${YOUTUBE_API}`,
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`,
       this.getRequestOptions
       //위에서 처리한 것을 사용
     )
@@ -23,7 +22,7 @@ class Youtube {
 
   search(query) {
     return fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${YOUTUBE_API}`,
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`,
       this.getRequestOptions
     )
       .then((response) => response.json())
