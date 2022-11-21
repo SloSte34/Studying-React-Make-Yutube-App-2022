@@ -11,8 +11,10 @@
 # production
 /build
 
-# misc
+# API KEYs
 .env
+
+# misc
 .DS_Store
 .env.local
 .env.development.local

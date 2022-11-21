@@ -4,7 +4,8 @@ import SearchHeader from './components/search_header/search_header';
 import VideoList from './components/video_list/video_list';
 
 function App({ youtube }) {
-  const [videos, setVideos] = useState([]); //1. 처음에는 텅 빈 state를 설정한다.
+  const [videos, setVideos] = useState([]);
+  const [seletedVideo, setSelectedVideo] = useState(null);
 
   const search = (query) => {
     youtube
