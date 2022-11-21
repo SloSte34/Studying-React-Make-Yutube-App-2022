@@ -2,3 +2,15 @@
   max-width: 70rem;
   /* 좌우로 너무 넓어지지 않도록 함 */
 }
+
+.content {
+  display: flex;
+}
+
+.detail {
+  flex: 1 1 65%;
+}
+
+.list {
+  flex: 1 1 35%;
+}
