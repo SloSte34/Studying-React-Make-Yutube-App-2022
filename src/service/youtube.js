@@ -1,23 +1,22 @@
+import axios from 'axios';
+
 class Youtube {
   constructor(key) {
-    this.key = key;
-    //받아온 key를 저장한다.
-    this.getRequestOptions = {
-      //반복적으로 쓰이는 부분
-      method: 'GET',
-      redirect: 'follow',
-    };
+    this.youtube = axios.create({
+      baseURL: 'https://youtube.googleapis.com/youtube/v3',
+      params: { key: key },
+    });
   }
 
-  mostPopular() {
-    //가장 인기 있는 것을 보여주는 부분
-    return fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`,
-      this.getRequestOptions
-      //위에서 처리한 것을 사용
-    )
-      .then((response) => response.json())
-      .then((result) => result.items);
+  async mostPopular() {
+    const response = await this.youtube.get('videos', {
+      params: {
+        part: 'snippet',
+        chart: 'mostPopular',
+        maxResults: 25,
+      },
+    });
+    return response.data.items;
   }
 
   search(query) {
